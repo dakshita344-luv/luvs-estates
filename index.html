@@ -160,7 +160,7 @@
     body {
       background-color: var(--bg-dark);
       color: var(--text-white);
-      overflow-x: hidden;
+      overflow-x: clip;
       -webkit-overflow-scrolling: touch;
     }
 
@@ -194,7 +194,7 @@
       width: 100%;
       height: 480vh; /* Smooth, luxurious scroll distance */
       background: #000;
-      touch-action: pan-y;
+      touch-action: pan-y pinch-zoom;
     }
 
     #sticky-viewport {
@@ -210,6 +210,14 @@
       z-index: 10;
     }
 
+    #frame-poster {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     #frame-canvas {
       position: absolute;
       top: 0;
@@ -218,6 +226,7 @@
       height: 100%;
       display: block;
       object-fit: cover;
+      opacity: 0;
       z-index: 1;
     }
 
@@ -510,6 +519,11 @@
       align-items: center;
       justify-content: center;
       transition: opacity 0.8s var(--ease-lux), visibility 0.8s;
+      animation: dismissLoader 0s 6s forwards;
+    }
+
+    @keyframes dismissLoader {
+      to { opacity: 0; visibility: hidden; pointer-events: none; }
     }
 
     #preloader.fade-out {
@@ -736,7 +750,8 @@
        ============================================================ -->
   <div id="animation-track">
     <div id="sticky-viewport">
-      <canvas id="frame-canvas"></canvas>
+      <img id="frame-poster" src="frames/ezgif-frame-001.jpg" alt="Villa Serena at twilight" fetchpriority="high">
+      <canvas id="frame-canvas" aria-hidden="true"></canvas>
       <div class="viewport-overlay"></div>
 
       <!-- STORY 0: HERO OVERVIEW -->
@@ -1172,65 +1187,64 @@
     const loaderFill = document.getElementById('loader-fill');
     const websiteBrand = document.getElementById('website-brand');
 
+    // Decoded frames use ~3.5 MB each, regardless of JPEG file size.
+    // Keep a small, evenly spaced sequence on phones instead of ~844 MB.
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const mobileDevice = window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 900;
+    const frameCount = reducedMotion ? 1 : mobileDevice ? 16 : TOTAL_FRAMES;
+    const frameIndices = Array.from({ length: frameCount }, (_, i) =>
+      frameCount === 1 ? 0 : Math.round(i * (TOTAL_FRAMES - 1) / (frameCount - 1)));
     const frames = new Array(TOTAL_FRAMES);
+    let renderRequest = 0;
+
+    function requestRender() {
+      if (!renderRequest && !document.hidden && ctx) {
+        renderRequest = requestAnimationFrame(renderLoop);
+      }
+    }
     let loadedCount = 0;
     let currentFrame = 0;
     let targetFrame = 0;
-    let lastRenderedIndex = -1;
 
     function formatFrameIndex(index) {
       return String(index).padStart(3, '0');
     }
 
     function initPreloader() {
-      let isFirstFrameDrawn = false;
       let experienceStarted = false;
-      // On mobile, start with fewer frames loaded (10 instead of 25)
-      const isMobile = window.innerWidth <= 768;
-      const initialThreshold = isMobile ? 10 : 25;
+      let nextFrame = 0;
+      function begin() {
+        if (experienceStarted) return;
+        experienceStarted = true;
+        clearTimeout(failsafeTimer);
+        startExperience();
+      }
+      const failsafeTimer = setTimeout(begin, 4000);
 
-      // Hard failsafe: if frames take too long, start anyway after 6s
-      const failsafeTimer = setTimeout(function() {
-        if (!experienceStarted) {
-          experienceStarted = true;
-          startExperience();
-        }
-      }, 6000);
-
-      for (let i = 1; i <= TOTAL_FRAMES; i++) {
+      // Limit concurrent downloads and decoding on constrained devices.
+      function loadNext() {
+        if (!ctx || nextFrame >= frameIndices.length) return;
+        const index = frameIndices[nextFrame++];
         const img = new Image();
-        const src = `${FRAME_PREFIX}${formatFrameIndex(i)}${FRAME_EXT}`;
-
-        img.onload = () => {
-          frames[i - 1] = img;
+        img.decoding = 'async';
+        function complete() {
           loadedCount++;
-
-          const percent = Math.floor((loadedCount / TOTAL_FRAMES) * 100);
-          if (loaderFill) loaderFill.style.width = `${percent}%`;
-
-          if (!isFirstFrameDrawn && frames[0]) {
-            isFirstFrameDrawn = true;
-            resizeCanvas();
-            renderFrame(0);
-          }
-
-          if (!experienceStarted && loadedCount >= initialThreshold) {
-            experienceStarted = true;
-            clearTimeout(failsafeTimer);
-            startExperience();
-          }
+          if (loaderFill) loaderFill.style.width = `${Math.round(loadedCount / frameCount * 100)}%`;
+          begin();
+          requestRender();
+          loadNext();
+        }
+        img.onload = () => {
+          frames[index] = img;
+          complete();
         };
-
-        img.onerror = () => {
-          loadedCount++; // Count failed frames so we don't block the experience
-          if (!experienceStarted && loadedCount >= initialThreshold) {
-            experienceStarted = true;
-            clearTimeout(failsafeTimer);
-            startExperience();
-          }
-        };
-
-        img.src = src;
+        img.onerror = complete;
+        img.src = `${FRAME_PREFIX}${formatFrameIndex(index + 1)}${FRAME_EXT}`;
+      }
+      if (!ctx) begin();
+      else {
+        loadNext();
+        loadNext();
       }
     }
 
@@ -1239,7 +1253,7 @@
       resizeCanvas();
       renderFrame(0);
       setupScroll();
-      requestAnimationFrame(renderLoop);
+      requestRender();
     }
 
     /* ============================================================
@@ -1250,9 +1264,11 @@
     let dpr = 1;
 
     function resizeCanvas() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvasW = window.innerWidth;
-      canvasH = window.innerHeight;
+      if (!ctx) return;
+      dpr = Math.min(window.devicePixelRatio || 1, mobileDevice ? 1 : 2);
+      const viewport = document.getElementById('sticky-viewport');
+      canvasW = viewport.clientWidth;
+      canvasH = viewport.clientHeight;
 
       // Reset transform before scaling to avoid accumulation bug
       canvas.width = canvasW * dpr;
@@ -1269,8 +1285,14 @@
     }, { passive: true });
 
     function renderFrame(index) {
-      const img = frames[index];
+      if (!ctx) return;
+      // Keep the nearest available image visible while another frame loads.
+      const availableIndex = frameIndices.reduce((nearest, candidate) =>
+        frames[candidate] && (nearest === -1 || Math.abs(candidate - index) < Math.abs(nearest - index))
+          ? candidate : nearest, -1);
+      const img = frames[availableIndex];
       if (!img || !img.complete || img.naturalWidth === 0) return;
+      canvas.style.opacity = '1';
 
       const imgW = img.naturalWidth || 1280;
       const imgH = img.naturalHeight || 720;
@@ -1289,16 +1311,15 @@
        PHYSICS-SMOOTH RENDER LOOP
        ============================================================ */
     function renderLoop() {
+      renderRequest = 0;
       currentFrame += (targetFrame - currentFrame) * 0.18;
       const frameIndex = Math.min(TOTAL_FRAMES - 1, Math.max(0, Math.round(currentFrame)));
 
-      if (frameIndex !== lastRenderedIndex) {
-        renderFrame(frameIndex);
-        lastRenderedIndex = frameIndex;
-      }
-
-      requestAnimationFrame(renderLoop);
+      renderFrame(frameIndex);
+      if (Math.abs(targetFrame - currentFrame) > 0.1) requestRender();
     }
+
+    document.addEventListener('visibilitychange', requestRender);
 
     /* ============================================================
        SCROLL DRIVER: MAPS ANIMATION-TRACK TO 240 FRAMES
@@ -1329,7 +1350,8 @@
         const relativeScroll = scrollTop - trackTop;
         const progress = Math.min(1, Math.max(0, relativeScroll / trackHeight));
 
-        targetFrame = progress * (TOTAL_FRAMES - 1);
+        targetFrame = reducedMotion ? 0 : progress * (TOTAL_FRAMES - 1);
+        requestRender();
         updateStorySections(progress);
 
         // Make website name disappear when 30% scrolled (progress >= 0.30)
@@ -1345,6 +1367,7 @@
       }
 
       window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
       // iOS Safari doesn't always fire scroll on initial load
       onScroll();
     }
