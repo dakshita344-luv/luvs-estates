@@ -194,14 +194,18 @@
       width: 100%;
       height: 480vh; /* Smooth, luxurious scroll distance */
       background: #000;
+      touch-action: pan-y;
     }
 
     #sticky-viewport {
+      position: -webkit-sticky; /* iOS Safari */
       position: sticky;
       top: 0;
       left: 0;
+      width: 100%;
       width: 100vw;
       height: 100vh;
+      height: 100dvh; /* Dynamic viewport height — fixes iOS address-bar jump */
       overflow: hidden;
       z-index: 10;
     }
@@ -278,14 +282,15 @@
 
     .story-card {
       background: var(--glass-bg);
-      backdrop-filter: blur(28px) saturate(180%);
-      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
       border: 1px solid var(--glass-border);
       border-radius: 28px;
       padding: 44px 48px;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.1);
       position: relative;
       overflow: hidden;
+      will-change: opacity, transform;
     }
 
     .story-card::before {
@@ -581,6 +586,18 @@
       /* Animation track: slightly shorter on mobile for faster experience */
       #animation-track { height: 400vh; }
 
+      /* Reduce blur on mobile GPU — prevents freeze on iOS/Android */
+      .story-card {
+        backdrop-filter: blur(8px) saturate(140%) !important;
+        -webkit-backdrop-filter: blur(8px) saturate(140%) !important;
+        padding: 22px 18px;
+        border-radius: 18px;
+      }
+      .viewport-overlay {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
       /* Story cards — centered full-width on small screens */
       .story-left,
       .story-right {
@@ -600,12 +617,6 @@
       }
 
       /* Story card sizing */
-      .story-card {
-        padding: 22px 18px;
-        border-radius: 18px;
-        backdrop-filter: blur(20px) saturate(160%);
-        -webkit-backdrop-filter: blur(20px) saturate(160%);
-      }
       .story-tag {
         font-size: 10px;
         letter-spacing: 1.5px;
@@ -678,10 +689,11 @@
 
     /* ---- Tour modal on mobile ---- */
     @media (max-width: 640px) {
-      #tour-modal > div {
-        max-height: 95vh;
+      #tour-modal {
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        flex-direction: column;
+        padding: 16px;
       }
     }
   </style>
@@ -1172,7 +1184,18 @@
 
     function initPreloader() {
       let isFirstFrameDrawn = false;
-      const initialThreshold = 25; // Reveal page as soon as 25 frames are ready
+      let experienceStarted = false;
+      // On mobile, start with fewer frames loaded (10 instead of 25)
+      const isMobile = window.innerWidth <= 768;
+      const initialThreshold = isMobile ? 10 : 25;
+
+      // Hard failsafe: if frames take too long, start anyway after 6s
+      const failsafeTimer = setTimeout(function() {
+        if (!experienceStarted) {
+          experienceStarted = true;
+          startExperience();
+        }
+      }, 6000);
 
       for (let i = 1; i <= TOTAL_FRAMES; i++) {
         const img = new Image();
@@ -1191,13 +1214,20 @@
             renderFrame(0);
           }
 
-          if (loadedCount >= initialThreshold && !preloader.classList.contains('fade-out')) {
+          if (!experienceStarted && loadedCount >= initialThreshold) {
+            experienceStarted = true;
+            clearTimeout(failsafeTimer);
             startExperience();
           }
         };
 
         img.onerror = () => {
-          img.src = src; // Retry once
+          loadedCount++; // Count failed frames so we don't block the experience
+          if (!experienceStarted && loadedCount >= initialThreshold) {
+            experienceStarted = true;
+            clearTimeout(failsafeTimer);
+            startExperience();
+          }
         };
 
         img.src = src;
@@ -1224,14 +1254,19 @@
       canvasW = window.innerWidth;
       canvasH = window.innerHeight;
 
+      // Reset transform before scaling to avoid accumulation bug
       canvas.width = canvasW * dpr;
       canvas.height = canvasH * dpr;
-      ctx.scale(dpr, dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); // safe reset instead of repeated scale()
 
       renderFrame(Math.round(currentFrame));
     }
 
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('resize', resizeCanvas, { passive: true });
+    // Also handle iOS viewport changes from address-bar hide/show
+    window.addEventListener('orientationchange', function() {
+      setTimeout(resizeCanvas, 300);
+    }, { passive: true });
 
     function renderFrame(index) {
       const img = frames[index];
@@ -1276,8 +1311,16 @@
     ];
 
     function setupScroll() {
+      function getScrollTop() {
+        // iOS Safari uses document.body.scrollTop; standard uses documentElement
+        return window.pageYOffset
+          || document.documentElement.scrollTop
+          || document.body.scrollTop
+          || 0;
+      }
+
       function onScroll() {
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollTop = getScrollTop();
         const trackTop = animationTrack.offsetTop;
         const trackHeight = animationTrack.offsetHeight - window.innerHeight;
 
@@ -1302,6 +1345,7 @@
       }
 
       window.addEventListener('scroll', onScroll, { passive: true });
+      // iOS Safari doesn't always fire scroll on initial load
       onScroll();
     }
 
