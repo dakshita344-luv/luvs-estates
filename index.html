@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUVS ESTATES — Luxury 3D Real Estate & Private Residences</title>
+
+  <!-- Tailwind CSS & Config from Flagship Homepage -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    /** @type {import('tailwindcss').Config} */
+    globalThis.tailwind = globalThis.tailwind || {};
+    globalThis.tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'gold-accent': '#C9974A',
+            'gold-primary': '#e5c388',
+            'gold-light': '#f5dfb8',
+            'gold-dark': '#b89352',
+            'light-primary': '#7F560C',
+            'light-on-primary': '#FFFFFF',
+            'light-primary-container': '#C9974A',
+            'light-on-primary-container': '#4D3100',
+            'light-secondary': '#715B3B',
+            'light-on-secondary': '#FFFFFF',
+            'light-secondary-container': '#FDDEB5',
+            'light-on-secondary-container': '#776140',
+            'light-tertiary': '#31628E',
+            'light-on-tertiary': '#FFFFFF',
+            'light-tertiary-container': '#76A4D4',
+            'light-on-tertiary-container': '#003960',
+            'light-error': '#BA1A1A',
+            'light-on-error': '#FFFFFF',
+            'light-background': '#FFF8F4',
+            'light-on-background': '#1F1B15',
+            'light-surface': '#FFF8F4',
+            'light-surface-container-lowest': '#FFFFFF',
+            'light-surface-container-low': '#FCF2E8',
+            'light-surface-container': '#F7ECE2',
+            'light-surface-container-high': '#F1E6DD',
+            'light-surface-container-highest': '#EBE1D7',
+            'light-on-surface': '#1F1B15',
+            'light-on-surface-variant': '#4F4538',
+            'light-outline': '#817566',
+            'light-outline-variant': '#D3C4B3',
+            'dark-primary': '#F4BD6C',
+            'dark-on-primary': '#442B00',
+            'dark-primary-container': '#C9974A',
+            'dark-on-primary-container': '#4D3100',
+            'dark-secondary': '#DFC29B',
+            'dark-on-secondary': '#3F2D11',
+            'dark-secondary-container': '#5A4628',
+            'dark-on-secondary-container': '#D1B48E',
+            'dark-tertiary': '#9CCBFD',
+            'dark-on-tertiary': '#003355',
+            'dark-tertiary-container': '#76A4D4',
+            'dark-on-tertiary-container': '#003960',
+            'dark-error': '#FFB4AB',
+            'dark-on-error': '#690005',
+            'dark-background': '#17130D',
+            'dark-on-background': '#EBE1D7',
+            'dark-surface': '#17130D',
+            'dark-surface-container-lowest': '#110E08',
+            'dark-surface-container-low': '#1F1B15',
+            'dark-surface-container': '#231F19',
+            'dark-surface-container-high': '#2E2923',
+            'dark-surface-container-highest': '#39342D',
+            'dark-on-surface': '#EBE1D7',
+            'dark-on-surface-variant': '#D3C4B3',
+            'dark-outline': '#9C8F7F',
+            'dark-outline-variant': '#4F4538',
+          },
+          borderRadius: {
+            'sm': '2px',
+            'DEFAULT': '4px',
+            'md': '8px',
+            'lg': '12px',
+            'xl': '16px',
+            'full': '9999px',
+          },
+          spacing: {
+            'gutter-xs': '4px',
+            'gutter-sm': '8px',
+            'gutter-md': '16px',
+            'gutter-lg': '24px',
+            'gutter-xl': '32px',
+            'section': '64px',
+            'page-margin': '48px',
+          },
+          fontFamily: {
+            'display': ['"Playfair Display"', '"Cinzel"', 'serif'],
+            'headline': ['"Playfair Display"', 'serif'],
+            'title': ['"Raleway"', 'sans-serif'],
+            'body': ['"Raleway"', 'sans-serif'],
+            'label': ['"Raleway"', 'sans-serif'],
+            'mono': ['"Spline Sans Mono"', '"Space Grotesk"', 'monospace'],
+          },
+          fontSize: {
+            'display-lg': ['64px', { lineHeight: '72px', letterSpacing: '-1px', fontWeight: '500' }],
+            'display-lg-mobile': ['32px', { lineHeight: '38px', letterSpacing: '-0.5px', fontWeight: '500' }],
+            'display-md': ['48px', { lineHeight: '56px', letterSpacing: '-0.75px', fontWeight: '500' }],
+            'display-md-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '500' }],
+            'headline-lg': ['36px', { lineHeight: '44px', letterSpacing: '-0.5px', fontWeight: '500' }],
+            'headline-lg-mobile': ['24px', { lineHeight: '30px', letterSpacing: '-0.25px', fontWeight: '500' }],
+            'headline-md': ['28px', { lineHeight: '36px', letterSpacing: '-0.25px', fontWeight: '500' }],
+            'title-lg': ['20px', { lineHeight: '28px', letterSpacing: '0.2px', fontWeight: '600' }],
+            'title-md': ['16px', { lineHeight: '24px', letterSpacing: '0.25px', fontWeight: '600' }],
+            'body-lg': ['17px', { lineHeight: '28px', letterSpacing: '0.15px', fontWeight: '400' }],
+            'body-md': ['15px', { lineHeight: '24px', letterSpacing: '0.15px', fontWeight: '400' }],
+            'label-lg': ['13px', { lineHeight: '18px', letterSpacing: '1.2px', fontWeight: '600' }],
+            'label-sm': ['11px', { lineHeight: '16px', letterSpacing: '1.5px', fontWeight: '600' }],
+            'mono-md': ['13px', { lineHeight: '20px', letterSpacing: '0.25px', fontWeight: '400' }],
+          },
+          transitionDuration: {
+            'state-change': '180ms',
+            'surface-enter': '450ms',
+            'camera-drift': '900ms',
+          },
+          transitionTimingFunction: {
+            'state-change': 'cubic-bezier(0.22, 1, 0.36, 1)',
+            'surface-enter': 'cubic-bezier(0.22, 1, 0.36, 1)',
+            'camera-drift': 'cubic-bezier(0.16, 1, 0.3, 1)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Google Fonts & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400..700;1,400..600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #08090c;
+      --gold-primary: #e5c388;
+      --gold-light: #f5dfb8;
+      --gold-dark: #b89352;
+      --gold-glow: rgba(229, 195, 136, 0.25);
+      --glass-bg: rgba(14, 16, 22, 0.75);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --text-white: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      overflow-x: hidden;
+    }
+
+    .material-symbols-outlined {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+
+    /* 3D Card Hover Effect */
+    .card-3d-tilt {
+      transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1), border-color 180ms cubic-bezier(0.22, 1, 0.36, 1);
+      transform-style: preserve-3d;
+    }
+
+    .card-3d-tilt:hover {
+      transform: perspective(1000px) rotateX(1.5deg) rotateY(-1.5deg) translateY(-4px);
+    }
+
+    /* ============================================================
+       SCROLL ANIMATION TRACK & STICKY VIEWPORT
+       ============================================================ */
+    #animation-track {
+      position: relative;
+      width: 100%;
+      height: 480vh; /* Smooth, luxurious scroll distance */
+      background: #000;
+    }
+
+    #sticky-viewport {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    #frame-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .viewport-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      background: 
+        radial-gradient(circle at center, transparent 40%, rgba(8, 9, 12, 0.65) 100%),
+        linear-gradient(to bottom, rgba(8, 9, 12, 0.6) 0%, transparent 20%, transparent 80%, rgba(8, 9, 12, 0.85) 100%);
+    }
+
+    /* ============================================================
+       STORY OVERLAY CARDS (Narrative layers during scroll)
+       ============================================================ */
+    .story-section {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s var(--ease-lux), transform 0.8s var(--ease-lux), visibility 0.8s;
+      pointer-events: none;
+      max-width: 580px;
+      width: 90%;
+    }
+
+    .story-section.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(-50%);
+    }
+
+    .story-left {
+      left: 6vw;
+      transform: translateY(-46%);
+    }
+    .story-left.active {
+      transform: translateY(-50%);
+    }
+
+    .story-right {
+      right: 6vw;
+      transform: translateY(-46%);
+    }
+    .story-right.active {
+      transform: translateY(-50%);
+    }
+
+    .story-center {
+      left: 50%;
+      transform: translate(-50%, -46%);
+      text-align: center;
+      max-width: 820px;
+    }
+    .story-center.active {
+      transform: translate(-50%, -50%);
+    }
+
+    .story-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 44px 48px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    }
+
+    .story-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(229, 195, 136, 0.1);
+      border: 1px solid rgba(229, 195, 136, 0.25);
+      color: var(--gold-primary);
+      font-family: 'Space Grotesk', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .story-tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold-primary);
+      box-shadow: 0 0 8px var(--gold-primary);
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .story-title {
+      font-family: 'Playfair Display', 'Cinzel', serif;
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .story-desc {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      font-weight: 400;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .story-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-value {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold-primary);
+      letter-spacing: 0.5px;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-top: 4px;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    /* Hero Special Styling */
+    .hero-badge {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold-primary);
+      margin-bottom: 16px;
+      background: rgba(229, 195, 136, 0.08);
+      padding: 6px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(229, 195, 136, 0.2);
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', 'Cinzel', serif;
+      font-size: 64px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      line-height: 1.05;
+      color: #ffffff;
+      text-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+      margin-bottom: 16px;
+    }
+
+    .hero-subtitle {
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: #e2e8f0;
+      margin-bottom: 32px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .hero-metrics {
+      display: inline-flex;
+      align-items: center;
+      gap: 24px;
+      background: rgba(14, 16, 22, 0.65);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(20px);
+      border-radius: 999px;
+      padding: 12px 32px;
+      margin-bottom: 36px;
+    }
+
+    .hero-metric {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-metric span {
+      color: var(--gold-primary);
+      font-weight: 700;
+    }
+
+    .hero-metric-sep {
+      width: 4px;
+      height: 4px;
+      background: var(--gold-primary);
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+
+    .scroll-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .scroll-indicator:hover {
+      color: var(--gold-primary);
+    }
+
+    .scroll-mouse {
+      width: 22px;
+      height: 36px;
+      border: 1.5px solid var(--gold-primary);
+      border-radius: 12px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .scroll-wheel {
+      width: 3px;
+      height: 7px;
+      background: var(--gold-primary);
+      border-radius: 2px;
+      margin-top: 6px;
+      animation: mouseWheel 2s infinite var(--ease-lux);
+    }
+
+    @keyframes mouseWheel {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(14px); }
+    }
+
+    /* Minimalist Fast Preloader */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: #08090c;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s var(--ease-lux), visibility 0.8s;
+    }
+
+    #preloader.fade-out {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-ring {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid rgba(229, 195, 136, 0.15);
+      border-top-color: var(--gold-primary);
+      animation: spinRing 1.8s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spinRing {
+      to { transform: rotate(360deg); }
+    }
+
+    .loader-brand {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      letter-spacing: 5px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .loader-bar-wrap {
+      width: 240px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 14px;
+    }
+
+    .loader-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--gold-primary);
+      transition: width 0.15s ease-out;
+    }
+
+    @media (max-width: 900px) {
+      .story-card { padding: 30px 24px; }
+      .hero-title { font-size: 38px; }
+      .story-title { font-size: 26px; }
+      .story-stats { grid-template-columns: 1fr 1fr; }
+      .hero-metrics { flex-direction: column; gap: 8px; border-radius: 20px; }
+      .story-left, .story-right { left: 5vw; right: 5vw; }
+    }
+  </style>
+</head>
+<body class="bg-dark-surface text-dark-on-surface font-body antialiased selection:bg-dark-primary selection:text-dark-on-primary">
+
+  <!-- Minimal Preloader Screen -->
+  <div id="preloader">
+    <div class="loader-ring"></div>
+    <div class="loader-brand">LUVS ESTATES</div>
+    <div style="font-size: 10px; letter-spacing: 2px; color: var(--gold-primary); text-transform: uppercase;">
+      Architectural Walkthrough
+    </div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar-fill" id="loader-fill"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FLOATING WEBSITE NAME (Disappears when 30% scrolled)
+       ============================================================ -->
+  <aside id="website-brand" class="fixed top-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none transition-all duration-700 ease-out opacity-100 translate-y-0">
+    <div class="flex items-center gap-3.5 bg-dark-surface/80 backdrop-blur-2xl px-7 py-3 rounded-full border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.65)]">
+      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gold-light via-gold-primary to-gold-dark flex items-center justify-center text-dark-surface font-display font-black text-sm shadow-[0_0_15px_rgba(229,195,136,0.35)]">
+        L
+      </div>
+      <div class="flex flex-col text-left">
+        <span class="font-display text-base md:text-lg font-bold tracking-[0.25em] text-white leading-tight">
+          LUVS ESTATES
+        </span>
+        <span class="font-label text-[9px] tracking-[0.22em] uppercase text-gold-primary leading-none mt-0.5">
+          Architectural Collection
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       SCROLL ANIMATION SECTION (Frame sequence & story cards)
+       ============================================================ -->
+  <div id="animation-track">
+    <div id="sticky-viewport">
+      <canvas id="frame-canvas"></canvas>
+      <div class="viewport-overlay"></div>
+
+      <!-- STORY 0: HERO OVERVIEW -->
+      <div class="story-section story-center active" id="sec-0">
+        <div class="hero-badge">Off-Market Beverly Hills Sanctuary</div>
+        <h1 class="hero-title">VILLA SERENA</h1>
+        <p class="hero-subtitle">
+          An unprecedented 24,000 sq.ft. tour de force uniting organic travertine, panoramic infinity horizons, and modernist pavilion architecture.
+        </p>
+
+        <div class="hero-metrics">
+          <div class="hero-metric"><span>24,000</span> SQ FT</div>
+          <div class="hero-metric-sep"></div>
+          <div class="hero-metric"><span>7</span> SUITES</div>
+          <div class="hero-metric-sep"></div>
+          <div class="hero-metric"><span>11</span> BATHS</div>
+          <div class="hero-metric-sep"></div>
+          <div class="hero-metric"><span>$48,500,000</span></div>
+        </div>
+
+        <div class="scroll-indicator">
+          <div class="scroll-mouse">
+            <div class="scroll-wheel"></div>
+          </div>
+          <span>Scroll to Explore Architecture</span>
+        </div>
+      </div>
+
+      <!-- STORY 1: ARCHITECTURE & MONOLITHIC FACADE -->
+      <div class="story-section story-left" id="sec-1">
+        <div class="story-card">
+          <div class="story-tag">
+            <span class="story-tag-dot"></span>
+            <span>01 / Architectural Monolith</span>
+          </div>
+          <h2 class="story-title">Cantilevered Serenity & Glass</h2>
+          <p class="story-desc">
+            Engineered into the crest of Beverly Crest, the estate blends structural steel with hand-chiseled Roman travertine. Motorized acoustic glass walls open effortlessly to erase the boundary between nature and shelter.
+          </p>
+
+          <div class="story-stats">
+            <div class="stat-item">
+              <span class="stat-value">22 FT</span>
+              <span class="stat-label">Ceiling Heights</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">1.8 AC</span>
+              <span class="stat-label">Gated Grounds</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">100%</span>
+              <span class="stat-label">Solar Autonomy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STORY 2: THE GREAT ROOM & LIVING SPACES -->
+      <div class="story-section story-right" id="sec-2">
+        <div class="story-card">
+          <div class="story-tag">
+            <span class="story-tag-dot"></span>
+            <span>02 / Volumetric Grandeur</span>
+          </div>
+          <h2 class="story-title">Curated for Light & Art</h2>
+          <p class="story-desc">
+            The Great Room spans 3,400 uninterrupted square feet, bathed in diffused California ambient light. Museum-grade lighting highlights sculpture niches, flanked by a floating bronze fireplace and temperature-controlled wine gallery.
+          </p>
+
+          <div class="story-stats">
+            <div class="stat-item">
+              <span class="stat-value">850 BTL</span>
+              <span class="stat-label">Wine Vault</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">Custom</span>
+              <span class="stat-label">Minotti Millwork</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">Italian</span>
+              <span class="stat-label">Silver Travertine</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STORY 3: TWILIGHT & INFINITY TERRACE -->
+      <div class="story-section story-left" id="sec-3">
+        <div class="story-card">
+          <div class="story-tag">
+            <span class="story-tag-dot"></span>
+            <span>03 / The Sunset Matrix</span>
+          </div>
+          <h2 class="story-title">Suspended Above The City Lights</h2>
+          <p class="story-desc">
+            As twilight descends, the 115-foot zero-edge heated infinity pool transforms into a liquid mirror reflecting golden canyon skies. A sunken fire lounge and hydrotherapy spa offer seamless sunset entertaining.
+          </p>
+
+          <div class="story-stats">
+            <div class="stat-item">
+              <span class="stat-value">115 FT</span>
+              <span class="stat-label">Infinity Pool</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">360°</span>
+              <span class="stat-label">Canyon to Sea View</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">Heated</span>
+              <span class="stat-label">Submerged Lounge</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FLAGSHIP HOMEPAGE CONTENT (Appears when scroll animation ends)
+       ============================================================ -->
+  <main id="flagship-sections" class="relative z-20 bg-dark-surface text-dark-on-surface">
+
+    <!-- CURATED RESIDENCES PORTFOLIO -->
+    <section id="residences" class="py-section border-t border-dark-outline-variant/30 bg-dark-surface/65 backdrop-blur-sm">
+      <div class="max-w-7xl mx-auto px-gutter-lg md:px-page-margin">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-gutter-lg mb-12">
+          <div class="flex flex-col gap-gutter-sm">
+            <span class="font-label text-label-sm uppercase text-dark-primary tracking-widest" data-design-text-token="label-sm">Global Portfolio</span>
+            <h2 class="font-headline text-headline-lg-mobile md:text-headline-lg text-dark-on-surface text-balance" data-design-text-token="headline-lg">Curated Twilight Residences</h2>
+          </div>
+          <p class="font-body text-body-md text-dark-on-surface-variant max-w-md text-pretty" data-design-text-token="body-md">
+            Each property is documented in volumetric 3D and paired with private aviation and architectural provenance.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter-xl items-stretch">
+          <!-- Residence 1: Monaco -->
+          <article data-component-id="card-action" data-component-type="card" data-component-variant="action" class="card-3d-tilt bg-dark-surface-container-low border border-dark-outline-variant/70 rounded-md overflow-hidden flex flex-col justify-between h-full">
+            <div>
+              <div class="aspect-video overflow-hidden bg-dark-surface-container-lowest">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrBaPdMMaFJqarufvYnfuhQUzZc96bVWqsymnRQwff4h8nxCCK_FZHPIdPIzLJjH4zcPMzkia6QQsFqhVnEodpboVxzAgWX46sqPXtKuXONOTzvD1-4RFSPBUFIYSbghKO72sgicmMRKSxRbvgj7dYTqOghRHepz4nHEheyKInYnyzLVzWM1cozh1j2KHLSfINKb1GhIC8uFuZXVOQbHME24fqEmQt5daH_0lXqpDFXDvD9Ey-VtoSCT3rIeJL0" alt="Villa Azurea cantilevered above the Mediterranean coast in Monaco at twilight" class="w-full h-full object-cover">
+              </div>
+              <div class="p-gutter-lg flex flex-col gap-gutter-sm">
+                <span class="font-label text-label-sm uppercase text-dark-primary tracking-widest" data-design-text-token="label-sm">Monte Carlo · Monaco</span>
+                <h3 class="font-headline text-headline-md text-dark-on-surface" data-design-text-token="headline-md">Villa Azurea</h3>
+                <p class="font-body text-body-md text-dark-on-surface-variant text-pretty" data-design-text-token="body-md">
+                  Cantilevered limestone and bronze-tinted glass overlooking the Mediterranean harbor with private sea terrace.
+                </p>
+              </div>
+            </div>
+            <footer class="px-gutter-lg py-gutter-md border-t border-dark-outline-variant/40 flex items-center justify-between gap-gutter-md">
+              <span class="font-mono text-mono-md text-dark-on-surface tabular-nums" data-design-text-token="mono-md">$62,000,000</span>
+              <button type="button" data-tour-estate="Villa Azurea · Monaco" class="launch-estate-tour inline-flex items-center gap-1.5 text-dark-primary font-label text-label-lg uppercase tracking-widest hover:text-dark-secondary transition-colors duration-state-change">
+                <span data-design-text-token="label-lg">3D Tour</span>
+                <span class="material-symbols-outlined text-title-md" aria-hidden="true">arrow_forward</span>
+              </button>
+            </footer>
+          </article>
+
+          <!-- Residence 2: Lake Como -->
+          <article data-component-id="card-action" data-component-type="card" data-component-variant="action" class="card-3d-tilt bg-dark-surface-container-low border border-dark-outline-variant/70 rounded-md overflow-hidden flex flex-col justify-between h-full">
+            <div>
+              <div class="aspect-video overflow-hidden bg-dark-surface-container-lowest">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrA4JfmJJfadbvj2xCBu2czhmtLNgg0dr905yK2mJhJTQDtUhxHlJWTu6ddzaImwjKBQh8U1UvY4ZU9VvNAXAqTCeHfM4m0jUKJs4iO8yviKHG6afUPPPZhuiVJ9ETH5JlskQJBksyfSU2Aor3z0hxL1HGzzo6sUlWwTP22yjtkASWjvZCB6X-v3gd9SLiD1sXC1TuQRS7TIjlcuOjtuzQin8stEN3mFQRS72KD33xDnNi-kcuUhjKlYgiRgPjqUCQ" alt="Palazzo Nero waterfront basalt stone villa on Lake Como at blue hour" class="w-full h-full object-cover">
+              </div>
+              <div class="p-gutter-lg flex flex-col gap-gutter-sm">
+                <span class="font-label text-label-sm uppercase text-dark-primary tracking-widest" data-design-text-token="label-sm">Torno · Lake Como</span>
+                <h3 class="font-headline text-headline-md text-dark-on-surface" data-design-text-token="headline-md">Palazzo Nero</h3>
+                <p class="font-body text-body-md text-dark-on-surface-variant text-pretty" data-design-text-token="body-md">
+                  Monolithic dark basalt sanctuary with submerged Riva boathouse, thermal spa, and 160 meters of shoreline.
+                </p>
+              </div>
+            </div>
+            <footer class="px-gutter-lg py-gutter-md border-t border-dark-outline-variant/40 flex items-center justify-between gap-gutter-md">
+              <span class="font-mono text-mono-md text-dark-on-surface tabular-nums" data-design-text-token="mono-md">$39,800,000</span>
+              <button type="button" data-tour-estate="Palazzo Nero · Lake Como" class="launch-estate-tour inline-flex items-center gap-1.5 text-dark-primary font-label text-label-lg uppercase tracking-widest hover:text-dark-secondary transition-colors duration-state-change">
+                <span data-design-text-token="label-lg">3D Tour</span>
+                <span class="material-symbols-outlined text-title-md" aria-hidden="true">arrow_forward</span>
+              </button>
+            </footer>
+          </article>
+
+          <!-- Residence 3: Dubai -->
+          <article data-component-id="card-action" data-component-type="card" data-component-variant="action" class="card-3d-tilt bg-dark-surface-container-low border border-dark-outline-variant/70 rounded-md overflow-hidden flex flex-col justify-between h-full">
+            <div>
+              <div class="aspect-video overflow-hidden bg-dark-surface-container-lowest">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrB42GiIggmL360w84LP1OUGVrJrJ83Ofk3-c-GtsX5S9dYGj_tP8Ti1ik-BQL8pawaUKfaKlP_QH-3iWIdZVMCSdgpzZqLEv4ZOVZQFujSVdkOtLv5cMoSedMC-o7CSh3T3XoLrqGwsgWrQOXwJjku8tEEs7HGRXjdn-wkL81ZhwKVcWokcOPfTmRr-p87Y1XBId2Ux4e6PG_-XOyef_S83WO6bvy8DnJelfnabh8joUMrb21Q7ANBt0FrWGdTG-vA" alt="The Dunes Pavilion minimalist travertine waterfront residence in Dubai at dusk" class="w-full h-full object-cover">
+              </div>
+              <div class="p-gutter-lg flex flex-col gap-gutter-sm">
+                <span class="font-label text-label-sm uppercase text-dark-primary tracking-widest" data-design-text-token="label-sm">Palm Jumeirah · Dubai</span>
+                <h3 class="font-headline text-headline-md text-dark-on-surface" data-design-text-token="headline-md">The Dunes Pavilion</h3>
+                <p class="font-body text-body-md text-dark-on-surface-variant text-pretty" data-design-text-token="body-md">
+                  Honed travertine colonnades, private yacht berth, and sunken twilight fire lounge framing the Arabian Gulf.
+                </p>
+              </div>
+            </div>
+            <footer class="px-gutter-lg py-gutter-md border-t border-dark-outline-variant/40 flex items-center justify-between gap-gutter-md">
+              <span class="font-mono text-mono-md text-dark-on-surface tabular-nums" data-design-text-token="mono-md">$54,200,000</span>
+              <button type="button" data-tour-estate="The Dunes Pavilion · Dubai" class="launch-estate-tour inline-flex items-center gap-1.5 text-dark-primary font-label text-label-lg uppercase tracking-widest hover:text-dark-secondary transition-colors duration-state-change">
+                <span data-design-text-token="label-lg">3D Tour</span>
+                <span class="material-symbols-outlined text-title-md" aria-hidden="true">arrow_forward</span>
+              </button>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE 3D SPATIAL ARCHITECTURE BREAKDOWN -->
+    <section id="spatial-3d" class="py-section border-t border-dark-outline-variant/30 bg-dark-surface-container-lowest/70 backdrop-blur-sm">
+      <div class="max-w-7xl mx-auto px-gutter-lg md:px-page-margin grid grid-cols-1 lg:grid-cols-12 gap-gutter-xl items-center">
+        <div class="lg:col-span-5 flex flex-col gap-gutter-lg">
+          <span class="font-label text-label-sm uppercase text-dark-primary tracking-widest" data-design-text-token="label-sm">Volumetric Twin</span>
+          <h2 class="font-headline text-headline-lg-mobile md:text-headline-lg text-dark-on-surface text-balance" data-design-text-token="headline-lg">Every Elevation Mapped in 3D</h2>
+          <p class="font-body text-body-md text-dark-on-surface-variant text-pretty" data-design-text-token="body-md">
+            Inspect sightlines, ceiling heights, and twilight lighting transitions across each architectural tier before stepping onto the property.
+          </p>
+
+          <!-- Level Tabs -->
+          <div role="tablist" aria-label="Villa Nocturne Floor Levels" class="flex flex-col gap-gutter-sm pt-2">
+            <button role="tab" aria-selected="true" data-level-tab="level-1" type="button" class="level-tab text-left px-gutter-lg py-gutter-md rounded border border-dark-primary bg-dark-surface-container text-dark-on-surface transition-colors duration-state-change">
+              <span class="font-mono text-mono-md text-dark-primary block" data-design-text-token="mono-md">01 · ARRIVAL COURT</span>
+              <span class="font-title text-title-md text-dark-on-surface" data-design-text-token="title-md">Motor Gallery &amp; Waterfall Deck</span>
+            </button>
+            <button role="tab" aria-selected="false" data-level-tab="level-2" type="button" class="level-tab text-left px-gutter-lg py-gutter-md rounded border border-dark-outline-variant/50 bg-dark-surface-container-low text-dark-on-surface-variant hover:border-dark-outline transition-colors duration-state-change">
+              <span class="font-mono text-mono-md text-dark-outline block" data-design-text-token="mono-md">02 · MAIN PAVILION</span>
+              <span class="font-title text-title-md text-dark-on-surface" data-design-text-token="title-md">Double-Height Salon &amp; Wine Vault</span>
+            </button>
+            <button role="tab" aria-selected="false" data-level-tab="level-3" type="button" class="level-tab text-left px-gutter-lg py-gutter-md rounded border border-dark-outline-variant/50 bg-dark-surface-container-low text-dark-on-surface-variant hover:border-dark-outline transition-colors duration-state-change">
+              <span class="font-mono text-mono-md text-dark-outline block" data-design-text-token="mono-md">03 · SKY CANTILEVER</span>
+              <span class="font-title text-title-md text-dark-on-surface" data-design-text-token="title-md">Primary Suite &amp; Observatory</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Active Level Spatial Panel -->
+        <div class="lg:col-span-7">
+          <div class="bg-dark-surface-container border border-dark-outline-variant/60 rounded-md p-gutter-xl">
+            <div data-level-panel="level-1" class="level-panel flex flex-col gap-gutter-lg">
+              <div class="flex items-center justify-between border-b border-dark-outline-variant/40 pb-4">
+                <div>
+                  <span class="font-label text-label-sm uppercase text-dark-primary tracking-widest" data-design-text-token="label-sm">Elevation +0.0m</span>
+                  <h3 class="font-headline text-headline-md text-dark-on-surface" data-design-text-token="headline-md">Motor Gallery &amp; Waterfall Deck</h3>
+                </div>
+                <span class="font-mono text-mono-md text-dark-secondary tabular-nums" data-design-text-token="mono-md">7,200 sq ft</span>
+              </div>
+              <p class="font-body text-body-lg text-dark-on-surface-variant text-pretty" data-design-text-token="body-lg">
+                Heated Nero Marquina stone terrace wrapping a 42-meter infinity waterfall edge, sunken travertine fire lounge, and climate-controlled six-car arrival court.
+              </p>
+              <div class="grid grid-cols-3 gap-gutter-md pt-2">
+                <div class="bg-dark-surface-container-low p-gutter-md rounded border border-dark-outline-variant/40">
+                  <span class="font-label text-label-sm uppercase text-dark-outline block" data-design-text-token="label-sm">Stone</span>
+                  <span class="font-title text-title-md text-dark-on-surface" data-design-text-token="title-md">Nero Marquina</span>
+                </div>
+                <div class="bg-dark-surface-container-low p-gutter-md rounded border border-dark-outline-variant/40">
+                  <span class="font-label text-label-sm uppercase text-dark-outline block" data-design-text-token="label-sm">Pool Span</span>
+                  <span class="font-mono text-mono-md text-dark-on-surface tabular-nums" data-design-text-token="mono-md">42.0 Meters</span>
+                </div>
+                <div class="bg-dark-surface-container-low p-gutter-md rounded border border-dark-outline-variant/40">
+                  <span class="font-label text-label-sm uppercase text-dark-outline block" data-design-text-token="label-sm">3D Scan</span>
+                  <span class="font-mono text-mono-md text-dark-primary" data-design-text-token="mono-md">8K LiDAR</span>
+                </div>
+              </div>
+            </div>
+
+            <div data-level-panel="level-2" class="level-panel hidden flex-col gap-gutter-lg">
+              <div class="flex items-center justify-between border-b border-dark-outline-variant/40 pb-4">
+                <div>
+                  <span class="font-label text-label-sm uppercase text-dark-primary tracking-widest" data-design-text-token="label-sm">Elevation +4.8m</span>
+                  <h3 class="font-headline text-headline-md text-dark-on-surface" data-design-text-token="headline-md">Double-Height Salon &amp; Wine Vault</h3>
+                </div>
+                <span class="font-mono text-mono-md text-dark-secondary tabular-nums" data-design-text-token="mono-md">6,400 sq ft</span>
+              </div>
+              <p class="font-body text-body-lg text-dark-on-surface-variant text-pretty" data-design-text-token="body-lg">
+                24-foot acoustic glass walls retract seamlessly toward the city skyline, anchored by a spiral brass chandelier and 1,400-bottle subterranean cellar.
+              </p>
+              <div class="grid grid-cols-3 gap-gutter-md pt-2">
+                <div class="bg-dark-surface-container-low p-gutter-md rounded border border-dark-outline-variant/40">
+                  <span class="font-label text-label-sm uppercase text-dark-outline block" data-design-text-token="label-sm">Ceiling</span>
+                  <span class="font-mono text-mono-md text-dark-on-surface tabular-nums" data-design-text-token="mono-md">7.3 Meters</span>
+                </div>
+                <div class="bg-dark-surface-container-low p-gutter-md rounded border border-dark-outline-variant/40">
+                  <span class="font-label text-label-sm uppercase text-dark-outline block" data-design-text-token="label-sm">Cellar</span>
+                  <span class="font-mono text-mono-md text-dark-on-surface tabular-nums" data-design-text-token="mono-md">1,400 Bottles</span>
+                </div>
+                <div class="bg-dark-surface-container-low p-gutter-md rounded border border-dark-outline-variant/40">
+                  <span class="font-label text-label-sm uppercase text-dark-outline block" data-design-text-token="label-sm">Glazing</span>
+                  <span class="font-title text-title-md text-dark-on-surface" data-design-text-token="title-md">Low-Iron Acoustic</span>
+                </div>
+              </div>
+            </div>
+
+            <div data-level-panel="level-3" class="level-panel hidden flex-col gap-gutter-lg">
+              <div class="flex items-center justify-between border-b border-dark-outline-variant/40 pb-4">
+                <div>
+                  <span class="font-label text-label-sm uppercase text-dark-primary tracking-widest" data-design-text-token="label-sm">Elevation +9.2m</span>
+                  <h3 class="font-headline text-headline-md text-dark-on-surface" data-design-text-token="headline-md">Primary Suite &amp; Observatory</h3>
+                </div>
+                <span class="font-mono text-mono-md text-dark-secondary tabular-nums" data-design-text-token="mono-md">4,800 sq ft</span>
+              </div>
+              <p class="font-body text-body-lg text-dark-on-surface-variant text-pretty" data-design-text-token="body-lg">
+                Cantilevered private wing suspended 9 meters over the canyon with dual travertine baths, cedar dressing gallery, and wraparound twilight sky deck.
+              </p>
+              <div class="grid grid-cols-3 gap-gutter-md pt-2">
+                <div class="bg-dark-surface-container-low p-gutter-md rounded border border-dark-outline-variant/40">
+                  <span class="font-label text-label-sm uppercase text-dark-outline block" data-design-text-token="label-sm">Cantilever</span>
+                  <span class="font-mono text-mono-md text-dark-on-surface tabular-nums" data-design-text-token="mono-md">9.0 Meters</span>
+                </div>
+                <div class="bg-dark-surface-container-low p-gutter-md rounded border border-dark-outline-variant/40">
+                  <span class="font-label text-label-sm uppercase text-dark-outline block" data-design-text-token="label-sm">Orientation</span>
+                  <span class="font-mono text-mono-md text-dark-on-surface tabular-nums" data-design-text-token="mono-md">270° West</span>
+                </div>
+                <div class="bg-dark-surface-container-low p-gutter-md rounded border border-dark-outline-variant/40">
+                  <span class="font-label text-label-sm uppercase text-dark-outline block" data-design-text-token="label-sm">Privacy</span>
+                  <span class="font-title text-title-md text-dark-on-surface" data-design-text-token="title-md">Biometric Lift</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVATE CONCIERGE & VIEWING INQUIRY -->
+    <section id="concierge" class="py-section border-t border-dark-outline-variant/30 bg-dark-surface/65 backdrop-blur-sm">
+      <div class="max-w-7xl mx-auto px-gutter-lg md:px-page-margin grid grid-cols-1 lg:grid-cols-12 gap-gutter-xl items-start">
+        <div class="lg:col-span-5 flex flex-col gap-gutter-md">
+          <span class="font-label text-label-sm uppercase text-dark-primary tracking-widest" data-design-text-token="label-sm">Private Advisory</span>
+          <h2 class="font-headline text-headline-lg-mobile md:text-headline-lg text-dark-on-surface text-balance" data-design-text-token="headline-lg">Arrange a Discreet Viewing</h2>
+          <p class="font-body text-body-md text-dark-on-surface-variant max-w-prose text-pretty" data-design-text-token="body-md">
+            Our senior partners coordinate live guided 3D walkthroughs, architectural dossiers, and private in-person arrivals across Beverly Hills, Monaco, Lake Como, and Dubai.
+          </p>
+          <div class="pt-4 border-t border-dark-outline-variant/40 flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-sm uppercase text-dark-outline" data-design-text-token="label-sm">Direct Desk</span>
+            <span class="font-mono text-mono-md text-dark-on-surface" data-design-text-token="mono-md">concierge@luvsestates.com · +1 (310) 555-0194</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <form id="concierge-form" class="bg-dark-surface-container-low border border-dark-outline-variant/60 rounded-md p-gutter-xl grid grid-cols-1 md:grid-cols-2 gap-gutter-lg">
+            <div class="flex flex-col gap-gutter-xs">
+              <label for="client-name" class="font-label text-label-sm uppercase text-dark-on-surface-variant" data-design-text-token="label-sm">Full Name</label>
+              <input id="client-name" type="text" required placeholder="Elena Rostova" class="bg-dark-surface-container border border-dark-outline-variant rounded px-gutter-md py-3 font-body text-body-md text-dark-on-surface placeholder:text-dark-outline focus:border-dark-primary focus:ring-0">
+            </div>
+            <div class="flex flex-col gap-gutter-xs">
+              <label for="client-email" class="font-label text-label-sm uppercase text-dark-on-surface-variant" data-design-text-token="label-sm">Private Email</label>
+              <input id="client-email" type="email" required placeholder="elena@familyoffice.ch" class="bg-dark-surface-container border border-dark-outline-variant rounded px-gutter-md py-3 font-body text-body-md text-dark-on-surface placeholder:text-dark-outline focus:border-dark-primary focus:ring-0">
+            </div>
+            <div class="flex flex-col gap-gutter-xs">
+              <label for="estate-select" class="font-label text-label-sm uppercase text-dark-on-surface-variant" data-design-text-token="label-sm">Residence of Interest</label>
+              <select id="estate-select" class="bg-dark-surface-container border border-dark-outline-variant rounded px-gutter-md py-3 font-body text-body-md text-dark-on-surface focus:border-dark-primary focus:ring-0">
+                <option>Villa Serena — Beverly Crest ($48.5M)</option>
+                <option>Villa Azurea — Monaco ($62.0M)</option>
+                <option>Palazzo Nero — Lake Como ($39.8M)</option>
+                <option>The Dunes Pavilion — Dubai ($54.2M)</option>
+              </select>
+            </div>
+            <div class="flex flex-col gap-gutter-xs">
+              <label for="viewing-mode" class="font-label text-label-sm uppercase text-dark-on-surface-variant" data-design-text-token="label-sm">Viewing Format</label>
+              <select id="viewing-mode" class="bg-dark-surface-container border border-dark-outline-variant rounded px-gutter-md py-3 font-body text-body-md text-dark-on-surface focus:border-dark-primary focus:ring-0">
+                <option>Guided 3D Spatial Walkthrough</option>
+                <option>Private In-Person Twilight Viewing</option>
+                <option>Architectural Dossier Only</option>
+              </select>
+            </div>
+            <div class="md:col-span-2 flex flex-wrap items-center justify-between gap-gutter-md pt-2">
+              <p id="form-feedback" class="font-body text-body-md text-dark-primary hidden" data-design-text-token="body-md">
+                Your private dossier request has been logged. A senior partner will respond within two hours.
+              </p>
+              <button data-component-id="button-primary" data-component-type="button" data-component-variant="primary" type="submit" class="ml-auto inline-flex items-center justify-center gap-2 bg-dark-primary text-dark-on-primary px-gutter-xl py-3.5 rounded font-label text-label-lg uppercase tracking-widest transition-transform duration-state-change ease-state-change hover:bg-dark-primary-container focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dark-primary active:scale-[0.98]">
+                <span data-design-text-token="label-lg">Request Private Dossier</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Editorial Footer -->
+  <footer class="relative z-20 border-t border-dark-outline-variant/40 bg-dark-surface-container-lowest/80 backdrop-blur-md py-gutter-xl">
+    <div class="max-w-7xl mx-auto px-gutter-lg md:px-page-margin flex flex-col md:flex-row items-center justify-between gap-gutter-md">
+      <span class="font-display text-title-lg text-dark-on-surface" data-design-text-token="title-lg">Luv&#39;s Estates</span>
+      <span class="font-mono text-mono-md text-dark-outline" data-design-text-token="mono-md">BEVERLY HILLS · MONACO · LAKE COMO · DUBAI</span>
+      <span class="font-label text-label-sm uppercase text-dark-outline" data-design-text-token="label-sm">Private Brokerage · By Appointment</span>
+    </div>
+  </footer>
+
+  <!-- Interactive 3D Virtual Tour Modal -->
+  <div id="tour-modal" role="dialog" aria-modal="true" aria-labelledby="tour-modal-title" class="hidden fixed inset-0 z-50 bg-dark-surface/95 backdrop-blur-md flex flex-col justify-between p-gutter-lg md:p-page-margin">
+    <div class="flex items-center justify-between gap-gutter-md">
+      <div>
+        <span class="font-label text-label-sm uppercase text-dark-primary tracking-widest block" data-design-text-token="label-sm">Interactive 3D Spatial Tour</span>
+        <h2 id="tour-modal-title" class="font-headline text-headline-md text-dark-on-surface" data-design-text-token="headline-md">Villa Serena — Twilight Orbit</h2>
+      </div>
+      <button id="close-tour-btn" data-component-id="button-icon" data-component-type="button" data-component-variant="icon" type="button" aria-label="Exit 3D virtual tour" class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-dark-surface-container-high border border-dark-outline-variant text-dark-on-surface hover:border-dark-primary hover:text-dark-primary">
+        <span class="material-symbols-outlined text-title-lg" aria-hidden="true">close</span>
+      </button>
+    </div>
+
+    <!-- 3D Viewport Stage -->
+    <div class="relative flex-1 my-gutter-lg rounded-md overflow-hidden border border-dark-outline-variant/60 bg-dark-surface-container-lowest">
+      <img id="tour-stage-img" src="Cinematic Twilight Luxury Villa.png" alt="3D Virtual Tour Camera View" class="w-full h-full object-cover transition-transform duration-camera-drift ease-camera-drift">
+      <div class="absolute bottom-gutter-lg left-gutter-lg bg-dark-surface-container/85 backdrop-blur-md border border-dark-outline-variant/60 rounded px-gutter-md py-gutter-sm">
+        <span id="tour-telemetry" class="font-mono text-mono-md text-dark-primary tabular-nums" data-design-text-token="mono-md">CAM 01 · AZIMUTH 214° · ELEVATION +14.2M</span>
+      </div>
+    </div>
+
+    <!-- Camera Angle Switcher -->
+    <div class="flex flex-wrap items-center justify-center gap-gutter-sm">
+      <button type="button" data-cam="0" class="cam-preset-btn bg-dark-primary text-dark-on-primary px-gutter-lg py-2.5 rounded font-label text-label-lg uppercase tracking-widest">01 · Twilight Arrival</button>
+      <button type="button" data-cam="1" class="cam-preset-btn bg-dark-surface-container-high text-dark-on-surface border border-dark-outline-variant px-gutter-lg py-2.5 rounded font-label text-label-lg uppercase tracking-widest hover:border-dark-primary">02 · Infinity Waterfall</button>
+      <button type="button" data-cam="2" class="cam-preset-btn bg-dark-surface-container-high text-dark-on-surface border border-dark-outline-variant px-gutter-lg py-2.5 rounded font-label text-label-lg uppercase tracking-widest hover:border-dark-primary">03 · Glass Atrium</button>
+      <button type="button" data-cam="3" class="cam-preset-btn bg-dark-surface-container-high text-dark-on-surface border border-dark-outline-variant px-gutter-lg py-2.5 rounded font-label text-label-lg uppercase tracking-widest hover:border-dark-primary">04 · Skyline Lounge</button>
+    </div>
+  </div>
+
+  <!-- JavaScript Engine -->
+  <script>
+    /* ============================================================
+       CONFIGURATION & ASSETS FOR SCROLL ANIMATION
+       ============================================================ */
+    const TOTAL_FRAMES = 240;
+    const FRAME_PREFIX = 'frames/ezgif-frame-';
+    const FRAME_EXT = '.jpg';
+
+    const canvas = document.getElementById('frame-canvas');
+    const ctx = canvas.getContext('2d', { alpha: false });
+    const animationTrack = document.getElementById('animation-track');
+    const preloader = document.getElementById('preloader');
+    const loaderFill = document.getElementById('loader-fill');
+    const websiteBrand = document.getElementById('website-brand');
+
+    const frames = new Array(TOTAL_FRAMES);
+    let loadedCount = 0;
+    let currentFrame = 0;
+    let targetFrame = 0;
+    let lastRenderedIndex = -1;
+
+    function formatFrameIndex(index) {
+      return String(index).padStart(3, '0');
+    }
+
+    function initPreloader() {
+      let isFirstFrameDrawn = false;
+      const initialThreshold = 25; // Reveal page as soon as 25 frames are ready
+
+      for (let i = 1; i <= TOTAL_FRAMES; i++) {
+        const img = new Image();
+        const src = `${FRAME_PREFIX}${formatFrameIndex(i)}${FRAME_EXT}`;
+
+        img.onload = () => {
+          frames[i - 1] = img;
+          loadedCount++;
+
+          const percent = Math.floor((loadedCount / TOTAL_FRAMES) * 100);
+          if (loaderFill) loaderFill.style.width = `${percent}%`;
+
+          if (!isFirstFrameDrawn && frames[0]) {
+            isFirstFrameDrawn = true;
+            resizeCanvas();
+            renderFrame(0);
+          }
+
+          if (loadedCount >= initialThreshold && !preloader.classList.contains('fade-out')) {
+            startExperience();
+          }
+        };
+
+        img.onerror = () => {
+          img.src = src; // Retry once
+        };
+
+        img.src = src;
+      }
+    }
+
+    function startExperience() {
+      preloader.classList.add('fade-out');
+      resizeCanvas();
+      renderFrame(0);
+      setupScroll();
+      requestAnimationFrame(renderLoop);
+    }
+
+    /* ============================================================
+       CANVAS SCALING (COVER RATIO WITH HIGH-DPI SHARPNESS)
+       ============================================================ */
+    let canvasW = 0;
+    let canvasH = 0;
+    let dpr = 1;
+
+    function resizeCanvas() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvasW = window.innerWidth;
+      canvasH = window.innerHeight;
+
+      canvas.width = canvasW * dpr;
+      canvas.height = canvasH * dpr;
+      ctx.scale(dpr, dpr);
+
+      renderFrame(Math.round(currentFrame));
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+
+    function renderFrame(index) {
+      const img = frames[index];
+      if (!img || !img.complete || img.naturalWidth === 0) return;
+
+      const imgW = img.naturalWidth || 1280;
+      const imgH = img.naturalHeight || 720;
+
+      const scale = Math.max(canvasW / imgW, canvasH / imgH);
+      const drawW = imgW * scale;
+      const drawH = imgH * scale;
+      const drawX = (canvasW - drawW) / 2;
+      const drawY = (canvasH - drawH) / 2;
+
+      ctx.clearRect(0, 0, canvasW, canvasH);
+      ctx.drawImage(img, drawX, drawY, drawW, drawH);
+    }
+
+    /* ============================================================
+       PHYSICS-SMOOTH RENDER LOOP
+       ============================================================ */
+    function renderLoop() {
+      currentFrame += (targetFrame - currentFrame) * 0.18;
+      const frameIndex = Math.min(TOTAL_FRAMES - 1, Math.max(0, Math.round(currentFrame)));
+
+      if (frameIndex !== lastRenderedIndex) {
+        renderFrame(frameIndex);
+        lastRenderedIndex = frameIndex;
+      }
+
+      requestAnimationFrame(renderLoop);
+    }
+
+    /* ============================================================
+       SCROLL DRIVER: MAPS ANIMATION-TRACK TO 240 FRAMES
+       ============================================================ */
+    const storySections = [
+      { id: 'sec-0', start: 0.00, end: 0.20 },
+      { id: 'sec-1', start: 0.26, end: 0.48 },
+      { id: 'sec-2', start: 0.54, end: 0.74 },
+      { id: 'sec-3', start: 0.80, end: 0.98 }
+    ];
+
+    function setupScroll() {
+      function onScroll() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const trackTop = animationTrack.offsetTop;
+        const trackHeight = animationTrack.offsetHeight - window.innerHeight;
+
+        if (trackHeight <= 0) return;
+
+        const relativeScroll = scrollTop - trackTop;
+        const progress = Math.min(1, Math.max(0, relativeScroll / trackHeight));
+
+        targetFrame = progress * (TOTAL_FRAMES - 1);
+        updateStorySections(progress);
+
+        // Make website name disappear when 30% scrolled (progress >= 0.30)
+        if (websiteBrand) {
+          if (progress >= 0.30) {
+            websiteBrand.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
+            websiteBrand.classList.remove('opacity-100', 'translate-y-0');
+          } else {
+            websiteBrand.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
+            websiteBrand.classList.add('opacity-100', 'translate-y-0');
+          }
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+
+    function updateStorySections(progress) {
+      storySections.forEach(sec => {
+        const el = document.getElementById(sec.id);
+        if (!el) return;
+
+        if (progress >= sec.start && progress <= sec.end) {
+          el.classList.add('active');
+        } else {
+          el.classList.remove('active');
+        }
+      });
+    }
+
+    /* ============================================================
+       FLAGSHIP INTERACTIVE LOGIC (Floor Tabs, Tour Modal, Forms)
+       ============================================================ */
+    (function () {
+      // Floor Level Tabs
+      const levelTabs = document.querySelectorAll('.level-tab');
+      const levelPanels = document.querySelectorAll('.level-panel');
+
+      levelTabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          const target = tab.dataset.levelTab;
+          levelTabs.forEach(function (t) {
+            const active = t === tab;
+            t.setAttribute('aria-selected', active ? 'true' : 'false');
+            t.classList.toggle('border-dark-primary', active);
+            t.classList.toggle('bg-dark-surface-container', active);
+            t.classList.toggle('border-dark-outline-variant/50', !active);
+            t.classList.toggle('bg-dark-surface-container-low', !active);
+          });
+          levelPanels.forEach(function (panel) {
+            if (panel.dataset.levelPanel === target) {
+              panel.classList.remove('hidden');
+              panel.classList.add('flex');
+            } else {
+              panel.classList.add('hidden');
+              panel.classList.remove('flex');
+            }
+          });
+        });
+      });
+
+      // 3D Virtual Tour Modal
+      const tourModal = document.getElementById('tour-modal');
+      const tourTitle = document.getElementById('tour-modal-title');
+      const tourStageImg = document.getElementById('tour-stage-img');
+      const tourTelemetry = document.getElementById('tour-telemetry');
+      const closeTourBtn = document.getElementById('close-tour-btn');
+
+      const camPresets = [
+        { transform: 'scale(1.02) translate3d(0px, 0px, 0px)', telemetry: 'CAM 01 · AZIMUTH 214° · ELEVATION +14.2M' },
+        { transform: 'scale(1.38) translate3d(10%, -12%, 0px)', telemetry: 'CAM 02 · WATERFALL EDGE · AZIMUTH 186° · +1.4M' },
+        { transform: 'scale(1.45) translate3d(-12%, 14%, 0px)', telemetry: 'CAM 03 · GLASS ATRIUM · AZIMUTH 242° · +6.8M' },
+        { transform: 'scale(1.32) translate3d(16%, 6%, 0px)', telemetry: 'CAM 04 · SKYLINE LOUNGE · AZIMUTH 268° · +9.5M' }
+      ];
+
+      function openTour(titleText) {
+        if (!tourModal) return;
+        if (tourTitle) tourTitle.textContent = titleText || 'Villa Serena — Twilight Orbit';
+        tourModal.classList.remove('hidden');
+        setCam(0);
+      }
+
+      function setCam(index) {
+        const preset = camPresets[index] || camPresets[0];
+        if (tourStageImg) tourStageImg.style.transform = preset.transform;
+        if (tourTelemetry) tourTelemetry.textContent = preset.telemetry;
+        document.querySelectorAll('.cam-preset-btn').forEach(function (b, idx) {
+          const isActive = idx === index;
+          b.className = isActive
+            ? 'cam-preset-btn bg-dark-primary text-dark-on-primary px-gutter-lg py-2.5 rounded font-label text-label-lg uppercase tracking-widest'
+            : 'cam-preset-btn bg-dark-surface-container-high text-dark-on-surface border border-dark-outline-variant px-gutter-lg py-2.5 rounded font-label text-label-lg uppercase tracking-widest hover:border-dark-primary';
+        });
+      }
+
+      if (closeTourBtn && tourModal) {
+        closeTourBtn.addEventListener('click', function () {
+          tourModal.classList.add('hidden');
+        });
+      }
+
+      document.querySelectorAll('.launch-estate-tour').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          openTour(btn.dataset.tourEstate + ' — 3D Walkthrough');
+        });
+      });
+
+      document.querySelectorAll('.cam-preset-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          setCam(parseInt(btn.dataset.cam, 10) || 0);
+        });
+      });
+
+      // Concierge Form
+      const form = document.getElementById('concierge-form');
+      const feedback = document.getElementById('form-feedback');
+      if (form && feedback) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          feedback.classList.remove('hidden');
+        });
+      }
+    })();
+
+    // Initialize frame preloading
+    initPreloader();
+  </script>
+</body>
+</html>

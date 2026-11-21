@@ -1,0 +1,19 @@
+{
+  "name": "luvs-estates",
+  "version": "1.0.0",
+  "description": "Luv's Estates — Luxury 3D Real Estate & Architectural Scroll Showcase",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo 'Static assets ready for deployment'"
+  },
+  "keywords": [
+    "luxury-real-estate",
+    "scroll-animation",
+    "canvas-animation",
+    "modern-architecture",
+    "interactive-3d"
+  ],
+  "author": "Luv's Estates",
+  "license": "MIT"
+}
