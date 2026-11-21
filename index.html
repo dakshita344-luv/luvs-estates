@@ -161,6 +161,7 @@
       background-color: var(--bg-dark);
       color: var(--text-white);
       overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
     }
 
     .material-symbols-outlined {
@@ -550,13 +551,138 @@
       transition: width 0.15s ease-out;
     }
 
+    /* ============================================================
+       RESPONSIVE MEDIA QUERIES — TABLET & MOBILE
+       ============================================================ */
+
+    /* ---- Tablet (≤900px) ---- */
     @media (max-width: 900px) {
-      .story-card { padding: 30px 24px; }
-      .hero-title { font-size: 38px; }
+      .story-card { padding: 30px 24px; border-radius: 20px; }
+      .hero-title { font-size: 40px; letter-spacing: 2px; }
+      .hero-subtitle { font-size: 15px; max-width: 90%; }
       .story-title { font-size: 26px; }
-      .story-stats { grid-template-columns: 1fr 1fr; }
-      .hero-metrics { flex-direction: column; gap: 8px; border-radius: 20px; }
-      .story-left, .story-right { left: 5vw; right: 5vw; }
+      .story-desc { font-size: 14px; }
+      .story-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .hero-metrics {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+        border-radius: 20px;
+        padding: 12px 20px;
+        justify-content: center;
+      }
+      .hero-metric-sep { display: none; }
+      .story-left { left: 4vw; right: auto; }
+      .story-right { right: 4vw; left: auto; }
+    }
+
+    /* ---- Mobile Large (≤640px) ---- */
+    @media (max-width: 640px) {
+      /* Animation track: slightly shorter on mobile for faster experience */
+      #animation-track { height: 400vh; }
+
+      /* Story cards — centered full-width on small screens */
+      .story-left,
+      .story-right {
+        left: 50% !important;
+        right: auto !important;
+        transform: translate(-50%, -46%) !important;
+        width: calc(100% - 28px) !important;
+        max-width: 100% !important;
+      }
+      .story-left.active,
+      .story-right.active {
+        transform: translate(-50%, -50%) !important;
+      }
+      .story-center {
+        width: calc(100% - 28px);
+        max-width: 100%;
+      }
+
+      /* Story card sizing */
+      .story-card {
+        padding: 22px 18px;
+        border-radius: 18px;
+        backdrop-filter: blur(20px) saturate(160%);
+        -webkit-backdrop-filter: blur(20px) saturate(160%);
+      }
+      .story-tag {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        padding: 5px 12px;
+        margin-bottom: 12px;
+      }
+      .story-title { font-size: clamp(20px, 6vw, 26px); margin-bottom: 10px; }
+      .story-desc  { font-size: 13px; line-height: 1.65; margin-bottom: 18px; }
+      .story-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; padding-top: 16px; }
+      .stat-value  { font-size: 18px; }
+      .stat-label  { font-size: 9px; }
+
+      /* Hero overlay */
+      .hero-badge   { font-size: 9px; letter-spacing: 2.5px; padding: 5px 14px; margin-bottom: 10px; }
+      .hero-title   { font-size: clamp(26px, 8vw, 40px); letter-spacing: 1.5px; margin-bottom: 12px; line-height: 1.1; }
+      .hero-subtitle{ font-size: 13px; letter-spacing: 0.5px; margin-bottom: 20px; max-width: 95%; }
+      .hero-metrics {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px 12px;
+        padding: 10px 16px;
+        border-radius: 16px;
+        margin-bottom: 20px;
+      }
+      .hero-metric  { font-size: 11px; gap: 5px; }
+      .hero-metric-sep { display: none; }
+      .scroll-indicator { font-size: 9px; letter-spacing: 1.5px; gap: 8px; }
+      .scroll-mouse { width: 18px; height: 30px; }
+    }
+
+    /* ---- Mobile Small (≤390px) ---- */
+    @media (max-width: 390px) {
+      .hero-title { font-size: clamp(22px, 7.5vw, 32px); }
+      .story-card { padding: 18px 14px; }
+      .story-title { font-size: 19px; }
+      .story-stats { grid-template-columns: repeat(2, 1fr); }
+      .hero-metrics { padding: 8px 12px; }
+      .hero-metric  { font-size: 10px; }
+    }
+
+    /* ---- Brand badge on mobile ---- */
+    @media (max-width: 640px) {
+      #website-brand > div {
+        gap: 8px;
+        padding-left: 14px;
+        padding-right: 14px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+    }
+
+    /* ---- Touch & tap improvements ---- */
+    @media (hover: none) and (pointer: coarse) {
+      /* Disable 3D tilt on touch devices */
+      .card-3d-tilt:hover {
+        transform: none;
+      }
+      /* Ensure tap targets are large enough */
+      button, .launch-estate-tour, .level-tab, .cam-preset-btn, a {
+        min-height: 44px;
+        min-width: 44px;
+      }
+    }
+
+    /* ---- Flagship sections — mobile padding ---- */
+    @media (max-width: 640px) {
+      .py-section { padding-top: 40px !important; padding-bottom: 40px !important; }
+    }
+
+    /* ---- Tour modal on mobile ---- */
+    @media (max-width: 640px) {
+      #tour-modal > div {
+        max-height: 95vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
     }
   </style>
 </head>
